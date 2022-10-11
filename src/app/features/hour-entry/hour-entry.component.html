@@ -1,4 +1,3 @@
-<app-date-selector></app-date-selector>
 <div class="total-time">
   <span>Total time: </span>
   <span *ngIf="totalTimeInMinutes$ | async as totalTimeInMinutes">{{
@@ -15,7 +14,7 @@
     *ngFor="let projectEntry of projectEntryViewModels; trackBy: trackById"
     class="project-entry"
   >
-    <app-project-entry [projectEntry]="projectEntry"></app-project-entry>
+    <app-project-entry></app-project-entry>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
