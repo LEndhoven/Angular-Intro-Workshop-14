@@ -1,0 +1,41 @@
+<mat-form-field appearance="fill" class="project-input">
+  <mat-label>Project</mat-label>
+  <input
+    matInput
+    [formControl]="projectControl"
+    [matAutocomplete]="autoProject"
+  />
+  <mat-autocomplete
+    autoActiveFirstOption
+    #autoProject="matAutocomplete"
+    [displayWith]="displayProjectName"
+  >
+    <mat-option
+      *ngFor="let project of filteredProjects$ | async"
+      [value]="project"
+    >
+      {{ project.name }}
+    </mat-option>
+  </mat-autocomplete>
+  <mat-error *ngIf="projectControl.invalid">Field is required</mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="fill" class="description-input">
+  <mat-label>Description</mat-label>
+  <input matInput [formControl]="descriptionControl" />
+  <mat-error *ngIf="descriptionControl.invalid">Field is required</mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="fill" class="time-input">
+  <mat-label>Time spent</mat-label>
+  <input matInput [formControl]="spentTimeControl" [matAutocomplete]="auto" />
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option
+      *ngFor="let timeEntry of filteredTimes$ | async"
+      [value]="timeEntry"
+    >
+      {{ timeEntry }}
+    </mat-option>
+  </mat-autocomplete>
+  <mat-error *ngIf="spentTimeControl.invalid">Field is required</mat-error>
+</mat-form-field>

@@ -1,0 +1,29 @@
+<app-date-selector></app-date-selector>
+<div class="total-time">
+  <span>Total time: </span>
+  <span *ngIf="totalTimeInMinutes$ | async as totalTimeInMinutes">{{
+    totalTimeInMinutes
+  }}</span>
+</div>
+<div
+  *ngIf="projectEntryViewModels$ | async as projectEntryViewModels"
+  class="drop-list"
+  cdkDropList
+  (cdkDropListDropped)="droppedProjectEntry($event)"
+>
+  <div
+    *ngFor="let projectEntry of projectEntryViewModels; trackBy: trackById"
+    class="project-entry"
+  >
+    <app-project-entry [projectEntry]="projectEntry"></app-project-entry>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="duplicateProjectEntry(projectEntry)">
+        <mat-icon>content_copy</mat-icon>
+        <span>Duplicate</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>
