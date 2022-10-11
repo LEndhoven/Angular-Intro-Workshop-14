@@ -48,8 +48,17 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -59,6 +68,9 @@
           "configurations": {
             "production": {
               "browserTarget": "demo:build:production"
+            },
+            "development": {
+              "browserTarget": "demo:build:development"
             }
           }
         },
